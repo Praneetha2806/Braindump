@@ -12,7 +12,11 @@ export function extractUrls(text: string): string[] {
 
 const TODO_RE =
   /^\s*(?:[-*•]\s*\[\s?\]|\[\s?\]|(?:to-?do|remember to|remind me|don'?t forget|need to|have to|must|buy|get|call|text|email|book|schedule|pay|pick up|finish|submit|reply|tomorrow|tonight|next week)\b)/i;
-const IDEA_RE = /\b(idea|what if|maybe we|could build|how about|wouldn'?t it be)\b/i;
+// Also projects in the works: "We are building…", "Thinking of making…", "brainstorming".
+const IDEA_RE =
+  /\b(idea|what if|maybe we|could build|how about|wouldn'?t it be|brainstorm\w*|(?:we|i)(?:'re| are|'m| am) (?:building|creating|developing)|thinking (?:of|about) (?:building|making|creating|starting|launching))\b/i;
+// Openers that always start a new idea instead of continuing the previous one.
+const NEW_IDEA_RE = /^\s*(?:idea:|what if|how about)/i;
 const INSPO_RE = /\b(inspo|inspiration|design|palette|colou?rs?|ui|ux|layout|fonts?|typography|moodboard|reference|style)\b/i;
 
 // Plans count as to-dos too: things with a time on them, intentions, and appointments.
@@ -49,7 +53,7 @@ const CONNECTOR = /^(?:and also|oh and|and|also|plus|then|btw)\s+/i;
 const hasUrl = (s: string) => /https?:\/\//i.test(s);
 /** Does this piece of text start something new (a task, an idea, a link) rather than continue the last one? */
 const startsIntent = (s: string) =>
-  TODO_RE.test(stripBullet(s)) || INTENT_RE.test(s) || /^\s*(?:idea:|what if|how about)/i.test(s) || hasUrl(s);
+  TODO_RE.test(stripBullet(s)) || INTENT_RE.test(s) || NEW_IDEA_RE.test(s) || hasUrl(s);
 // "Hey," / "So," on its own carries nothing.
 const isFiller = (s: string) => /^(?:hey|hi|hello|ok|okay|so|um|well|alright|oh)[!.,]*$/i.test(s.trim());
 
@@ -93,10 +97,14 @@ function parse(text: string): Clause[] {
     if (IDEA_RE.test(c)) return { kind: "idea", text: c, urls: [] };
     return { kind: "note", text: c, urls: [] };
   });
-  // Neighbouring note clauses are one thought, and plain sentences after an idea keep elaborating it.
+  // Neighbouring note clauses are one thought, and sentences after an idea keep elaborating it unless they open a
+  // new one ("Idea: …", "What if …").
   return parsed.reduce<Clause[]>((acc, c) => {
     const last = acc[acc.length - 1];
-    if (c.kind === "note" && (last?.kind === "note" || last?.kind === "idea")) last.text += " " + c.text;
+    const continues =
+      (c.kind === "note" && (last?.kind === "note" || last?.kind === "idea")) ||
+      (c.kind === "idea" && last?.kind === "idea" && !NEW_IDEA_RE.test(c.text));
+    if (continues) last.text += " " + c.text;
     else acc.push({ ...c });
     return acc;
   }, []);
