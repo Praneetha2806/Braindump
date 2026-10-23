@@ -10,8 +10,6 @@ export function extractUrls(text: string): string[] {
   return [...new Set(text.match(URL_RE) ?? [])];
 }
 
-const TODO_RE =
-  /^\s*(?:[-*•]\s*\[\s?\]|\[\s?\]|(?:to-?do|remember to|remind me|don'?t forget|need to|have to|must|buy|get|call|text|email|book|schedule|pay|pick up|finish|submit|reply|tomorrow|tonight|next week)\b)/i;
 // Also projects in the works: "We are building…", "Thinking of making…", "brainstorming".
 const IDEA_RE =
   /\b(idea|what if|maybe we|could build|how about|wouldn'?t it be|brainstorm\w*|(?:we|i)(?:'re| are|'m| am) (?:building|creating|developing)|thinking (?:of|about) (?:building|making|creating|starting|launching))\b/i;
@@ -19,8 +17,34 @@ const IDEA_RE =
 const NEW_IDEA_RE = /^\s*(?:idea:|what if|how about)/i;
 const INSPO_RE = /\b(inspo|inspiration|design|palette|colou?rs?|ui|ux|layout|fonts?|typography|moodboard|reference|style)\b/i;
 
-// Plans count as to-dos too: things with a time on them, intentions, and appointments.
 const DAYS = "monday|tuesday|wednesday|thursday|friday|saturday|sunday";
+
+// ---------- To-do tags ----------
+// Words that send a clause to the to-do category, by type. When you add one, mirror it in the todo hint in
+// categories.ts so Claude follows it too.
+
+// Explicit task words, anywhere: "Reminder: dentist at 4", "pending: send the invoice".
+const TASK_WORDS = String.raw`to[\s-]?do|tasks?|action items?|reminders?|checklist|pending`;
+// Obligation phrases, anywhere: "I really need to sleep earlier", "don't forget the charger".
+const OBLIGATIONS = String.raw`need to|have to|has to|must|should|don['’]?t forget|do not forget|remember to|remind me`;
+// Action verbs, only when they open the clause: "email Sam the deck", but not "got an email from Sam".
+const ACTION_VERBS = String.raw`buy|get|call|text|email|send|book|submit|pay|schedule|fix|finish|follow[\s-]?up|pick up|renew|review|reply`;
+// Times and deadlines, anywhere, unless the clause looks back ("today was long"): "slides by Friday", "ASAP".
+const DEADLINES = String.raw`today|tomorrow|tonight|next week|by (?:${DAYS}|tomorrow|tonight|noon|eod|eow|end of (?:the )?(?:day|week|month))|before (?:${DAYS}|tomorrow|tonight|noon|the deadline|\d{1,2}(?::\d{2})?\s*(?:am|pm)?)|deadlines?|due(?! to\b)|eod|asap`;
+// Status words, anywhere: "report (in progress)", "car insurance overdue".
+const STATUSES = String.raw`in progress|not started|overdue`;
+// "done" and "completed" also describe the past ("I'm finally done with that show"), so they count only as a
+// label: "Done: pay rent", "pay rent - done", "pay rent (completed)".
+const DONE_LABEL_RE = /^\s*(?:done|completed)\s*[:\-–—]|(?:\s[-–—]\s*|[(\[])(?:done|completed)[)\]]?[.!]*\s*$/i;
+const STATUS_LABEL_RE = /^\s*(?:to[\s-]?do|tasks?|action items?|reminders?|pending|done|completed|in progress|not started|overdue)\s*:\s*/i;
+const STATUS_SUFFIX_RE = /\s*(?:\s[-–—]\s*|[(\[])(?:done|completed|in progress|not started|overdue)[)\]]?[.!]*\s*$/i;
+
+/** A clause that opens like a task: a checkbox, an action verb, a task word, or an obligation. */
+const TODO_RE = new RegExp(String.raw`^\s*(?:[-*•]\s*)?(?:\[\s?\]|(?:${ACTION_VERBS}|${TASK_WORDS}|${OBLIGATIONS}|tomorrow|tonight|next week)\b)`, "i");
+const TODO_TAG_RE = new RegExp(String.raw`\b(?:${TASK_WORDS}|${OBLIGATIONS}|${STATUSES})\b`, "i");
+const DEADLINE_RE = new RegExp(String.raw`\b(?:${DEADLINES})\b`, "i");
+
+// Plans count as to-dos too: things with a time on them, intentions, and appointments.
 const TIME_RE = new RegExp(
   String.raw`\b(?:at\s+\d{1,2}(?::\d{2})?(?:\s*(?:am|pm|a\.m\.|p\.m\.))?|\d{1,2}(?::\d{2})?\s*(?:am|pm|a\.m\.|p\.m\.)|tonight|this (?:morning|afternoon|evening)|later (?:today|tonight|this (?:morning|afternoon|evening)|in the (?:morning|afternoon|evening))|tomorrow|on (?:${DAYS})|this (?:${DAYS})|next (?:${DAYS}))\b`,
   "i",
@@ -32,19 +56,24 @@ const PAST_RE = /\b(?:was|were|went|had|did|felt|got back|yesterday|ago|last (?:
 
 /** Is this clause something the user means to do? */
 const isTask = (c: string) =>
-  TODO_RE.test(stripBullet(c)) || INTENT_RE.test(c) || (TIME_RE.test(c) && !PAST_RE.test(c.replace(INTENT_RE, "")));
+  TODO_RE.test(c) ||
+  TODO_RE.test(stripBullet(c)) ||
+  TODO_TAG_RE.test(c) ||
+  DONE_LABEL_RE.test(c) ||
+  INTENT_RE.test(c) ||
+  ((TIME_RE.test(c) || DEADLINE_RE.test(c)) && !PAST_RE.test(c.replace(INTENT_RE, "")));
 
-const TODO_HEADER_RE = /\b(to-?do|to do|tasks|to buy|shopping list|checklist)\b/i;
-const stripBullet = (l: string) => l.replace(/^\s*(?:[-*•]|\d+[.)])?\s*(?:\[\s?\]\s*)?(?:to-?do:\s*)?/i, "");
+const TODO_HEADER_RE = /\b(to-?do|to do|tasks|action items|reminders|pending|to buy|shopping list|checklist)\b/i;
+const stripBullet = (l: string) => l.replace(/^\s*(?:[-*•]|\d+[.)])?\s*(?:\[\s?\]\s*)?/i, "").replace(STATUS_LABEL_RE, "");
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 const stripPrefix = (l: string) => capitalize(l.replace(/^(?:idea|note|thought):\s*/i, ""));
 // Opening filler that isn't part of the task: "Hey, today I have a meeting…" → "Meeting…"
 const FILLER = /^(?:(?:hey|hi|hello|ok|okay|so|um|well|alright|oh)\b[,!.]?\s*|(?:today|tonight|tomorrow|later(?: in the (?:morning|afternoon|evening)| today| tonight)?|this (?:morning|afternoon|evening))\b,?\s+(?=i\b|i'))+/i;
 const INTENT_LEAD =
-  /^(?:i\s+(?:have|need|got|gotta|must|should|want|plan|am planning|'m planning|am going|'m going|will|'d like)\s+to|i'?ll|i\s+(?:was wondering|wonder|am wondering|'m wondering) if i (?:could|should|can|might)|maybe i (?:could|should|can|will|'ll)|i (?:have|'ve got|got)(?: an?)?(?= (?:meeting|appointment|call|interview|class|session|flight|date|dinner|lunch|coffee)\b)|remember to|don'?t forget to|remind me to|need to)\s*/i;
+  /^(?:i\s+(?:have|need|got|gotta|must|should|want|plan|am planning|'m planning|am going|'m going|will|'d like)\s+to|i'?ll|i\s+(?:was wondering|wonder|am wondering|'m wondering) if i (?:could|should|can|might)|maybe i (?:could|should|can|will|'ll)|i (?:have|'ve got|got)(?: an?)?(?= (?:meeting|appointment|call|interview|class|session|flight|date|dinner|lunch|coffee)\b)|remember to|don['’]?t forget to|remind me to|need to|have to|must|should)\s*/i;
 // "Hey, I was wondering if I could read Atomic Habits later tonight." → "Read Atomic Habits later tonight"
 const todoTitle = (l: string) =>
-  capitalize(stripBullet(l).replace(FILLER, "").replace(INTENT_LEAD, "").replace(/[.;,!]+$/, "").trim());
+  capitalize(stripBullet(l).replace(STATUS_SUFFIX_RE, "").replace(FILLER, "").replace(INTENT_LEAD, "").replace(/[.;,!]+$/, "").trim());
 const short = (s: string, n = 48) => (s.length > n ? s.slice(0, n) + "…" : s);
 
 // ---------- Splitting one message into one clause per intent ----------
