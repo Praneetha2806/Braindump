@@ -1,0 +1,156 @@
+import "./env.ts";
+import fs from "node:fs";
+import path from "node:path";
+import express from "express";
+import multer from "multer";
+import * as db from "./db.ts";
+import { classify } from "./classify.ts";
+import { aiEnabled } from "./claude.ts";
+import { generateTemplate } from "./templates.ts";
+import { fetchPreview } from "./links.ts";
+import { extractUrls } from "../shared/rules.ts";
+import { CATEGORY_IDS } from "../shared/categories.ts";
+
+const PORT = Number(process.env.PORT ?? 5173);
+const isProd = process.env.NODE_ENV === "production";
+const app = express();
+app.use(express.json());
+
+// ---------- Live updates (Server-Sent Events) ----------
+const clients = new Set<express.Response>();
+function broadcast(event: object) {
+  const payload = `data: ${JSON.stringify(event)}\n\n`;
+  for (const res of clients) res.write(payload);
+}
+const pushMessage = (id: string) => {
+  const message = db.getMessage(id);
+  if (message) broadcast({ type: "message", message });
+};
+
+app.get("/api/events", (req, res) => {
+  res.set({ "Content-Type": "text/event-stream", "Cache-Control": "no-cache", Connection: "keep-alive" });
+  res.flushHeaders();
+  clients.add(res);
+  const ping = setInterval(() => res.write(": ping\n\n"), 25_000);
+  req.on("close", () => {
+    clearInterval(ping);
+    clients.delete(res);
+  });
+});
+
+// ---------- Organizing pipeline ----------
+async function organize(id: string) {
+  try {
+    const msg = db.getMessage(id);
+    if (!msg) return;
+    db.replaceLinks(id, await Promise.all(extractUrls(msg.text).map(fetchPreview)));
+    pushMessage(id); // show link previews as soon as they're ready
+    db.replaceItems(id, await classify(db.getMessage(id)!));
+    db.setStatus(id, "done");
+  } catch (err) {
+    console.error(`[organize] ${id}:`, err);
+    db.setStatus(id, "error");
+  }
+  pushMessage(id);
+}
+
+// ---------- API ----------
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: db.UPLOAD_DIR,
+    filename: (_req, file, cb) => cb(null, db.newId() + path.extname(file.originalname).toLowerCase()),
+  }),
+  limits: { fileSize: 200 * 1024 * 1024 },
+});
+
+const kindOf = (mime: string) =>
+  mime.startsWith("image/") ? "image" : mime.startsWith("video/") ? "video" : mime.startsWith("audio/") ? "audio" : "file";
+
+app.get("/api/status", (_req, res) => res.json({ ai: aiEnabled }));
+
+app.get("/api/messages", (_req, res) => res.json(db.listMessages()));
+
+app.post("/api/messages", upload.array("files"), (req, res) => {
+  const files = (req.files as Express.Multer.File[]) ?? [];
+  const transcripts: (string | null)[] = JSON.parse(req.body.transcripts ?? "[]");
+  const text = String(req.body.text ?? "").replace(/\r\n/g, "\n").trim();
+  if (!text && files.length === 0) return res.status(400).json({ error: "Empty message" });
+
+  const message = db.insertMessage(
+    text,
+    files.map((f, i) => ({
+      kind: kindOf(f.mimetype),
+      // multer decodes multipart filenames as latin1; restore UTF-8 (e.g. Chinese names).
+      filename: Buffer.from(f.originalname, "latin1").toString("utf8"),
+      mime: f.mimetype,
+      size: f.size,
+      storedName: f.filename,
+      transcript: transcripts[i]?.trim() || null,
+    })),
+  );
+  res.status(201).json(message);
+  broadcast({ type: "message", message });
+  organize(message.id);
+});
+
+app.post("/api/messages/:id/reorganize", (req, res) => {
+  if (!db.getMessage(req.params.id)) return res.sendStatus(404);
+  db.setStatus(req.params.id, "pending");
+  pushMessage(req.params.id);
+  organize(req.params.id);
+  res.sendStatus(202);
+});
+
+app.delete("/api/messages/:id", (req, res) => {
+  for (const f of db.deleteMessage(req.params.id)) fs.rm(db.storedPath(f), { force: true }, () => {});
+  broadcast({ type: "deleted", id: req.params.id });
+  res.sendStatus(204);
+});
+
+app.patch("/api/items/:id", (req, res) => {
+  const { done, category } = req.body ?? {};
+  if (category !== undefined && !CATEGORY_IDS.includes(category)) return res.status(400).json({ error: "Unknown category" });
+  const messageId = db.updateItem(req.params.id, { done: done === undefined ? undefined : Boolean(done), category });
+  if (!messageId) return res.sendStatus(404);
+  pushMessage(messageId);
+  res.sendStatus(204);
+});
+
+app.get("/api/templates", (_req, res) => res.json(db.listTemplates()));
+
+app.post("/api/templates", async (req, res) => {
+  const prompt = String(req.body?.prompt ?? "").trim();
+  if (!prompt) return res.status(400).json({ error: "Describe the page you want." });
+  res.status(201).json(db.insertTemplate(prompt, await generateTemplate(prompt)));
+});
+
+app.put("/api/templates/:id", async (req, res) => {
+  const prompt = String(req.body?.prompt ?? "").trim();
+  if (!prompt) return res.status(400).json({ error: "Describe the page you want." });
+  const template = db.updateTemplate(req.params.id, prompt, await generateTemplate(prompt));
+  if (!template) return res.sendStatus(404);
+  res.json(template);
+});
+
+app.delete("/api/templates/:id", (req, res) => {
+  db.deleteTemplate(req.params.id);
+  res.sendStatus(204);
+});
+
+app.use("/uploads", express.static(db.UPLOAD_DIR, { maxAge: "7d" }));
+
+// ---------- Frontend ----------
+if (isProd) {
+  app.use(express.static("dist"));
+  app.get(/^\/(?!api|uploads).*/, (_req, res) => res.sendFile(path.resolve("dist/index.html")));
+} else {
+  const { createServer } = await import("vite");
+  const vite = await createServer({ server: { middlewareMode: true }, appType: "spa" });
+  app.use(vite.middlewares);
+}
+
+app.listen(PORT, () => {
+  console.log(`BrainDump running at http://localhost:${PORT}  (AI organizer: ${aiEnabled ? "Claude" : "rules only — set ANTHROPIC_API_KEY to enable"})`);
+  // Resume anything that was mid-organize when the server last stopped.
+  for (const id of db.pendingMessageIds()) organize(id);
+});
