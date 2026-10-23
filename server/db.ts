@@ -8,7 +8,7 @@ export const DATA_DIR = path.resolve("data");
 export const UPLOAD_DIR = path.join(DATA_DIR, "uploads");
 fs.mkdirSync(UPLOAD_DIR, { recursive: true });
 
-const db = new DatabaseSync(path.join(DATA_DIR, "braindump.db"));
+export const db = new DatabaseSync(path.join(DATA_DIR, "braindump.db"));
 db.exec(`
   PRAGMA journal_mode = WAL;
   PRAGMA foreign_keys = ON;

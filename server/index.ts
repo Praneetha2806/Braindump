@@ -7,9 +7,12 @@ import * as db from "./db.ts";
 import { classify } from "./classify.ts";
 import { aiEnabled } from "./claude.ts";
 import { generateTemplate } from "./templates.ts";
+import { importSeedIfEmpty } from "./seed.ts";
 import { fetchPreview } from "./links.ts";
 import { extractUrls } from "../shared/rules.ts";
 import { CATEGORY_IDS } from "../shared/categories.ts";
+
+importSeedIfEmpty(); // a fresh clone starts with the sample data in seed/
 
 const PORT = Number(process.env.PORT ?? 5173);
 const isProd = process.env.NODE_ENV === "production";

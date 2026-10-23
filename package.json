@@ -11,7 +11,8 @@
     "build": "vite build",
     "start": "NODE_ENV=production tsx server/index.ts",
     "typecheck": "tsc --noEmit",
-    "build:demo": "vite build --config vite.demo.config.ts"
+    "build:demo": "vite build --config vite.demo.config.ts",
+    "seed:export": "tsx server/seed.ts export"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.131.0",

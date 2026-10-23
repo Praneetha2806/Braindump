@@ -1,0 +1,950 @@
+{
+  "messages": [
+    {
+      "id": "d61fb6ce-5a12-4eed-9633-383a4f76577b",
+      "conversation_id": "main",
+      "created_at": 1791086047171,
+      "text": "To do tomorrow:\n- Call a friend\n- Buy oat milk\n- Submit expense report",
+      "status": "done"
+    },
+    {
+      "id": "30cdc8de-8935-4425-b197-f7a272834251",
+      "conversation_id": "main",
+      "created_at": 1791086047193,
+      "text": "Love this color palette, could use it as a reference for a landing page",
+      "status": "done"
+    },
+    {
+      "id": "4e77f929-6b69-4e20-a9fe-0755bc08a896",
+      "conversation_id": "main",
+      "created_at": 1791086047203,
+      "text": "https://github.com/anthropics/anthropic-sdk-typescript want to go through this properly later",
+      "status": "done"
+    },
+    {
+      "id": "81547a54-2b47-407b-80f7-f01331cb53f7",
+      "conversation_id": "main",
+      "created_at": 1791086047251,
+      "text": "Idea: what if there was a tool that turns voice memos into a weekly report automatically? Would that be useful?",
+      "status": "done"
+    },
+    {
+      "id": "fed38611-0669-42b3-8fa9-57f7002ad231",
+      "conversation_id": "main",
+      "created_at": 1791086047286,
+      "text": "Sunset on the way home from work",
+      "status": "done"
+    },
+    {
+      "id": "fe4b0226-7c08-4846-a6e9-569d4fd710cf",
+      "conversation_id": "main",
+      "created_at": 1791086047299,
+      "text": "Meetings today were tiring, but the direction we landed on is pretty clear. Feels like we can start building next week.",
+      "status": "done"
+    },
+    {
+      "id": "52546336-bf52-49b3-b631-7bef019fae79",
+      "conversation_id": "main",
+      "created_at": 1791086314088,
+      "text": "The café we went to on the weekend, the light was amazing",
+      "status": "done"
+    },
+    {
+      "id": "7c60ea5a-e58d-45bc-9d70-68af75544fb4",
+      "conversation_id": "main",
+      "created_at": 1791086314106,
+      "text": "Idea: auto-generate a \"week in review\" for the journal pages",
+      "status": "done"
+    },
+    {
+      "id": "90fc4f7b-a50f-495c-baee-040408e84b6f",
+      "conversation_id": "main",
+      "created_at": 1791086314127,
+      "text": "",
+      "status": "done"
+    },
+    {
+      "id": "04fc707f-35d5-405c-b9b6-6f1d9aecbc60",
+      "conversation_id": "main",
+      "created_at": 1792253520000,
+      "text": "Found this fig illustration, love the grainy texture and soft gradients. Style reference for the app covers",
+      "status": "done"
+    },
+    {
+      "id": "ed0cba24-55be-4bd1-a5b0-04e6fb7431b3",
+      "conversation_id": "main",
+      "created_at": 1792258800000,
+      "text": "Shopping list:\n- Figs\n- Sourdough\n- Oat milk\n- Coffee beans",
+      "status": "done"
+    },
+    {
+      "id": "06b5eac1-7569-41d3-a72a-fe52adb7ca6c",
+      "conversation_id": "main",
+      "created_at": 1792297800000,
+      "text": "https://en.wikipedia.org/wiki/Bullet_journal reading about rapid logging, it is basically what BrainDump does",
+      "status": "done"
+    },
+    {
+      "id": "004f2754-0a66-43d1-b317-45f9900c9e86",
+      "conversation_id": "main",
+      "created_at": 1792423800000,
+      "text": "Call the dentist to reschedule",
+      "status": "done"
+    },
+    {
+      "id": "c35d5f1e-2597-4b9e-bdfe-8ad62a058347",
+      "conversation_id": "main",
+      "created_at": 1792423860000,
+      "text": "Email Maya the onboarding notes",
+      "status": "done"
+    },
+    {
+      "id": "2c904950-a343-4f86-aace-fbefbd5a2f1e",
+      "conversation_id": "main",
+      "created_at": 1792271100000,
+      "text": "Fog rolling in over Lands End, the whole city disappeared in about five minutes",
+      "status": "done"
+    },
+    {
+      "id": "7a2edf0a-0a12-4296-a97b-f8b7bec500ff",
+      "conversation_id": "main",
+      "created_at": 1792433700000,
+      "text": "",
+      "status": "done"
+    },
+    {
+      "id": "b5c18f5c-4b72-47cc-8b78-2bc2344e10c4",
+      "conversation_id": "main",
+      "created_at": 1792448400000,
+      "text": "The colored pencil texture on this one is so good. Typography and color reference for the empty states",
+      "status": "done"
+    },
+    {
+      "id": "b76a2220-b265-4915-aad5-8e0c5d7fc699",
+      "conversation_id": "main",
+      "created_at": 1792464300000,
+      "text": "Cooked dinner for the first time in two weeks. Small win, felt good to be off screens for an hour.",
+      "status": "done"
+    },
+    {
+      "id": "b111d440-4f92-4c6c-9850-3d9897c9c93f",
+      "conversation_id": "main",
+      "created_at": 1792512300000,
+      "text": "To do:\n- Finish the template spec\n- Review Jun's PR\n- Book flights for Thanksgiving",
+      "status": "done"
+    },
+    {
+      "id": "a83c5ebf-971f-4a36-bcaa-cde25e498381",
+      "conversation_id": "main",
+      "created_at": 1792524600000,
+      "text": "https://fonts.google.com/specimen/Newsreader Newsreader looks great for headlines, maybe pair it with a clean sans",
+      "status": "done"
+    },
+    {
+      "id": "445f3f43-b301-437c-95a5-fce9216a4bf9",
+      "conversation_id": "main",
+      "created_at": 1792537800000,
+      "text": "What if search worked like asking a friend who remembers everything you ever sent them?",
+      "status": "done"
+    },
+    {
+      "id": "d1ee8cbb-6d39-4d59-968b-ecca17369680",
+      "conversation_id": "main",
+      "created_at": 1792559700000,
+      "text": "Couldn't sleep, kept thinking about how most notes apps make you decide where things go before you've even finished the thought.",
+      "status": "done"
+    },
+    {
+      "id": "fefdf586-ea30-458c-9538-162139e23058",
+      "conversation_id": "main",
+      "created_at": 1792597800000,
+      "text": "Saturated pinks with a yellow car, great palette for the launch page",
+      "status": "done"
+    },
+    {
+      "id": "6eabd099-76b1-4e26-8754-7faa432e9f1e",
+      "conversation_id": "main",
+      "created_at": 1792603200000,
+      "text": "Pay the electricity bill",
+      "status": "done"
+    },
+    {
+      "id": "8c8959ab-1c47-4543-9012-b309d7ad7814",
+      "conversation_id": "main",
+      "created_at": 1792612800000,
+      "text": "https://www.are.na are.na channels are such a nice way to collect references",
+      "status": "done"
+    },
+    {
+      "id": "cf2398ee-3b06-42d5-b30e-d036023bba01",
+      "conversation_id": "main",
+      "created_at": 1792633200000,
+      "text": "Sleepy moon for the night mode illustration set, love the style",
+      "status": "done"
+    },
+    {
+      "id": "ace6e3ef-ed95-4339-a43b-035ebdb96b0e",
+      "conversation_id": "main",
+      "created_at": 1792649100000,
+      "text": "Idea: a weekly digest that shows the three things you saved but never opened",
+      "status": "done"
+    },
+    {
+      "id": "0d33d430-b01f-4917-9cdd-7e6d6d6a6242",
+      "conversation_id": "main",
+      "created_at": 1792680300000,
+      "text": "Morning pages: feeling clearer about the roadmap. Search first, then custom templates.",
+      "status": "done"
+    },
+    {
+      "id": "44c9a708-0369-41ea-8eb5-21f9a49a8e72",
+      "conversation_id": "main",
+      "created_at": 1792686600000,
+      "text": "Remember to send the demo link to the team before standup",
+      "status": "done"
+    },
+    {
+      "id": "d70ee7b5-16a0-4361-978a-0a70127f8c80",
+      "conversation_id": "main",
+      "created_at": 1792696200000,
+      "text": "Lunch with Priya, she wants to try BrainDump with her design team next month",
+      "status": "done"
+    },
+    {
+      "id": "672a756e-ae96-490b-b4f1-f6753f810d0a",
+      "conversation_id": "main",
+      "created_at": 1792779972141,
+      "text": "Buy flowers for Sam, call the landlord about the heater, also this looks useful https://www.are.na/about",
+      "status": "done"
+    },
+    {
+      "id": "930cf19e-349a-4416-af09-15d8d2f6622e",
+      "conversation_id": "main",
+      "created_at": 1792780843722,
+      "text": "Hey, today I have a meeting with Rohan at 1, and later in the evening I have to go for a walk at 5 pm at Central Park.",
+      "status": "done"
+    },
+    {
+      "id": "83779c8b-5efa-4afd-ac08-88860f66a573",
+      "conversation_id": "main",
+      "created_at": 1792780845319,
+      "text": "Hey, I was wondering if I could read Atomic Habits later tonight.",
+      "status": "done"
+    }
+  ],
+  "attachments": [
+    {
+      "id": "5816d498-f637-48ef-873b-3f7926687b88",
+      "message_id": "30cdc8de-8935-4425-b197-f7a272834251",
+      "kind": "image",
+      "filename": "palette.png",
+      "mime": "image/png",
+      "size": 1178,
+      "stored_name": "966f88c4-5666-459c-80a8-a8dedfe315c1.png",
+      "transcript": null
+    },
+    {
+      "id": "89cb60ee-9889-4717-9b60-23b60baec8ec",
+      "message_id": "fed38611-0669-42b3-8fa9-57f7002ad231",
+      "kind": "image",
+      "filename": "sunset.png",
+      "mime": "image/png",
+      "size": 14212,
+      "stored_name": "ecdd90b4-0b45-4d19-b0b6-1cc0c9e0f650.png",
+      "transcript": null
+    },
+    {
+      "id": "a777fc42-b8f5-41f0-9c0c-21ec5ac73f31",
+      "message_id": "52546336-bf52-49b3-b631-7bef019fae79",
+      "kind": "image",
+      "filename": "cafe1.png",
+      "mime": "image/png",
+      "size": 6962,
+      "stored_name": "ea15ef04-3f15-4e65-9d61-c1365c138dc1.png",
+      "transcript": null
+    },
+    {
+      "id": "19b3f83e-5e71-4b22-a163-848282b27869",
+      "message_id": "52546336-bf52-49b3-b631-7bef019fae79",
+      "kind": "image",
+      "filename": "cafe2.png",
+      "mime": "image/png",
+      "size": 6991,
+      "stored_name": "d4065d1e-1b71-4302-9223-cfeaf394a8ba.png",
+      "transcript": null
+    },
+    {
+      "id": "b6fa4fbc-7f28-4c7d-94a4-362c79973295",
+      "message_id": "90fc4f7b-a50f-495c-baee-040408e84b6f",
+      "kind": "audio",
+      "filename": "memo.wav",
+      "mime": "audio/wav",
+      "size": 16044,
+      "stored_name": "dc4aead9-6fbc-4236-ad10-52daa2d6e00c.wav",
+      "transcript": "Was thinking on my walk just now: I have been going to bed too late and I have not been feeling great"
+    },
+    {
+      "id": "99a939ef-458a-45ad-a0ec-a64f1ae90620",
+      "message_id": "04fc707f-35d5-405c-b9b6-6f1d9aecbc60",
+      "kind": "image",
+      "filename": "fig.webp",
+      "mime": "image/webp",
+      "size": 128318,
+      "stored_name": "2906be34-f3c5-4f0c-94db-41a993bd450e.webp",
+      "transcript": null
+    },
+    {
+      "id": "aabfc487-08b6-48a7-adb6-def7dc903bc5",
+      "message_id": "2c904950-a343-4f86-aace-fbefbd5a2f1e",
+      "kind": "image",
+      "filename": "fog.png",
+      "mime": "image/png",
+      "size": 1228,
+      "stored_name": "98b1d3a0-ee6e-49c8-92d4-aaf1409e6447.png",
+      "transcript": null
+    },
+    {
+      "id": "ec9ae0c1-22b9-447b-8bc9-2349c414ecce",
+      "message_id": "7a2edf0a-0a12-4296-a97b-f8b7bec500ff",
+      "kind": "audio",
+      "filename": "memo2.wav",
+      "mime": "audio/wav",
+      "size": 24044,
+      "stored_name": "7e5f9206-3bb0-4a98-a494-4372785ef569.wav",
+      "transcript": "Idea: the journal could write a one line headline for each day, like a magazine cover line"
+    },
+    {
+      "id": "37261dfe-3720-4fff-bcb4-d58c73c27576",
+      "message_id": "b5c18f5c-4b72-47cc-8b78-2bc2344e10c4",
+      "kind": "image",
+      "filename": "toast.webp",
+      "mime": "image/webp",
+      "size": 99456,
+      "stored_name": "28afedcd-40b2-493f-b831-20a0453d5e02.webp",
+      "transcript": null
+    },
+    {
+      "id": "dfe8e224-a3ce-45a4-adfd-2777840d55a0",
+      "message_id": "fefdf586-ea30-458c-9538-162139e23058",
+      "kind": "image",
+      "filename": "car.webp",
+      "mime": "image/webp",
+      "size": 86338,
+      "stored_name": "71491fa4-e568-46e7-9103-ef0737f838ee.webp",
+      "transcript": null
+    },
+    {
+      "id": "1d410694-c075-465b-a55e-1523a39a2c52",
+      "message_id": "cf2398ee-3b06-42d5-b30e-d036023bba01",
+      "kind": "image",
+      "filename": "moon.webp",
+      "mime": "image/webp",
+      "size": 132570,
+      "stored_name": "a190e364-7bf2-4d3a-b23b-77cc7ed45edf.webp",
+      "transcript": null
+    }
+  ],
+  "links": [
+    {
+      "id": "f1d0943b-70ab-4997-bb48-9360cff6c37e",
+      "message_id": "06b5eac1-7569-41d3-a72a-fe52adb7ca6c",
+      "url": "https://en.wikipedia.org/wiki/Bullet_journal",
+      "title": "Bullet journal - Wikipedia",
+      "description": null,
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Bullet-Journal-by-Matt-Ragland.jpg/1280px-Bullet-Journal-by-Matt-Ragland.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
+      "site_name": "en.wikipedia.org"
+    },
+    {
+      "id": "6c58f6eb-0bd5-4b18-af51-aec15d5fefe9",
+      "message_id": "4e77f929-6b69-4e20-a9fe-0755bc08a896",
+      "url": "https://github.com/anthropics/anthropic-sdk-typescript",
+      "title": "GitHub - anthropics/anthropic-sdk-typescript: Access to Anthropic's safety-first language model APIs in TypeScript",
+      "description": "Access to Anthropic's safety-first language model APIs in TypeScript - anthropics/anthropic-sdk-typescript",
+      "image": "https://opengraph.githubassets.com/90341f3667ac3136d7551a33cfef7adf0fad4032d67b18f05d46302ec7b63012/anthropics/anthropic-sdk-typescript",
+      "site_name": "GitHub"
+    },
+    {
+      "id": "5853deb3-caa9-4a20-a2a3-a39bf7e9772e",
+      "message_id": "8c8959ab-1c47-4543-9012-b309d7ad7814",
+      "url": "https://www.are.na",
+      "title": "Are.na",
+      "description": "Are.na is a platform for connecting ideas and building knowledge.",
+      "image": "https://www.are.na/og-image.png",
+      "site_name": "Are.na"
+    },
+    {
+      "id": "3782bc68-c519-466d-8797-0dc42793e8eb",
+      "message_id": "a83c5ebf-971f-4a36-bcaa-cde25e498381",
+      "url": "https://fonts.google.com/specimen/Newsreader",
+      "title": "Newsreader - Google Fonts",
+      "description": "NewsReader is an original typeface designed by Production Type, primarily intended for continuous on-screen reading in content-rich environments. To contribute,",
+      "image": "https://www.gstatic.com/images/icons/material/apps/fonts/1x/catalog/v5/opengraph_color.png",
+      "site_name": "Google Fonts"
+    },
+    {
+      "id": "8885fb51-da4c-4e26-bc31-35a209b75e35",
+      "message_id": "672a756e-ae96-490b-b4f1-f6753f810d0a",
+      "url": "https://www.are.na/about",
+      "title": "About | Are.na",
+      "description": null,
+      "image": "https://www.are.na/og-image.png",
+      "site_name": "Are.na"
+    }
+  ],
+  "items": [
+    {
+      "id": "5e6fde46-8ac7-451d-aaab-0ab01af8c7fe",
+      "message_id": "d61fb6ce-5a12-4eed-9633-383a4f76577b",
+      "position": 0,
+      "category": "todo",
+      "topic": null,
+      "title": "Call a friend",
+      "body": "",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "0d33a7ca-43bf-40f0-a892-674503a56603",
+      "message_id": "d61fb6ce-5a12-4eed-9633-383a4f76577b",
+      "position": 1,
+      "category": "todo",
+      "topic": null,
+      "title": "Buy oat milk",
+      "body": "",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "48070e8f-3d11-42c1-82a6-819d3b8d8fd2",
+      "message_id": "d61fb6ce-5a12-4eed-9633-383a4f76577b",
+      "position": 2,
+      "category": "todo",
+      "topic": null,
+      "title": "Submit expense report",
+      "body": "",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "7c9be231-31e7-4f41-80d3-b90faf959911",
+      "message_id": "30cdc8de-8935-4425-b197-f7a272834251",
+      "position": 0,
+      "category": "inspiration",
+      "topic": null,
+      "title": "Love this color palette, could use it as a refer…",
+      "body": "Love this color palette, could use it as a reference for a landing page",
+      "attachment_id": "5816d498-f637-48ef-873b-3f7926687b88",
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "764be019-2fde-4365-a9a6-c2bb7e3654a0",
+      "message_id": "81547a54-2b47-407b-80f7-f01331cb53f7",
+      "position": 0,
+      "category": "idea",
+      "topic": null,
+      "title": "What if there was a tool that turns voice memos …",
+      "body": "What if there was a tool that turns voice memos into a weekly report automatically? Would that be useful?",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "f94e380c-6981-4ae3-8707-ff720ea59cf8",
+      "message_id": "fed38611-0669-42b3-8fa9-57f7002ad231",
+      "position": 0,
+      "category": "moment",
+      "topic": null,
+      "title": "Sunset on the way home from work",
+      "body": "Sunset on the way home from work",
+      "attachment_id": "89cb60ee-9889-4717-9b60-23b60baec8ec",
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "420660b1-c74b-41f7-8e37-0168bf6f6562",
+      "message_id": "fe4b0226-7c08-4846-a6e9-569d4fd710cf",
+      "position": 0,
+      "category": "note",
+      "topic": null,
+      "title": "Meetings today were tiring, but the direction we…",
+      "body": "Meetings today were tiring, but the direction we landed on is pretty clear. Feels like we can start building next week.",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "b0a0e386-d8e8-4847-b4bc-1b7d65c14789",
+      "message_id": "52546336-bf52-49b3-b631-7bef019fae79",
+      "position": 0,
+      "category": "moment",
+      "topic": null,
+      "title": "The café we went to on the weekend, the light wa…",
+      "body": "The café we went to on the weekend, the light was amazing",
+      "attachment_id": "a777fc42-b8f5-41f0-9c0c-21ec5ac73f31",
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "30be4862-2f31-42b2-9585-5aa34b21eac0",
+      "message_id": "52546336-bf52-49b3-b631-7bef019fae79",
+      "position": 1,
+      "category": "moment",
+      "topic": null,
+      "title": "The café we went to on the weekend, the light wa…",
+      "body": "The café we went to on the weekend, the light was amazing",
+      "attachment_id": "19b3f83e-5e71-4b22-a163-848282b27869",
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "34aef19b-e76d-46d3-b8c5-95b22007e7f9",
+      "message_id": "7c60ea5a-e58d-45bc-9d70-68af75544fb4",
+      "position": 0,
+      "category": "idea",
+      "topic": null,
+      "title": "Auto-generate a \"week in review\" for the journal…",
+      "body": "Auto-generate a \"week in review\" for the journal pages",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "e0b41a5e-00f4-4db9-810f-4f2b85322343",
+      "message_id": "90fc4f7b-a50f-495c-baee-040408e84b6f",
+      "position": 0,
+      "category": "note",
+      "topic": null,
+      "title": "Was thinking on my walk just now: I have been go…",
+      "body": "Was thinking on my walk just now: I have been going to bed too late and I have not been feeling great",
+      "attachment_id": "b6fa4fbc-7f28-4c7d-94a4-362c79973295",
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "a661eae0-c0ce-4e69-bd03-50fec8071db1",
+      "message_id": "04fc707f-35d5-405c-b9b6-6f1d9aecbc60",
+      "position": 0,
+      "category": "inspiration",
+      "topic": null,
+      "title": "Found this fig illustration, love the grainy tex…",
+      "body": "Found this fig illustration, love the grainy texture and soft gradients. Style reference for the app covers",
+      "attachment_id": "99a939ef-458a-45ad-a0ec-a64f1ae90620",
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "3064639a-3ad8-4955-94d3-010000e99258",
+      "message_id": "ed0cba24-55be-4bd1-a5b0-04e6fb7431b3",
+      "position": 0,
+      "category": "todo",
+      "topic": null,
+      "title": "Figs",
+      "body": "",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "849b86d5-9a16-467a-8a20-7f631ad24c00",
+      "message_id": "ed0cba24-55be-4bd1-a5b0-04e6fb7431b3",
+      "position": 1,
+      "category": "todo",
+      "topic": null,
+      "title": "Sourdough",
+      "body": "",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "ce1c8df1-1406-45a5-a5de-b26437cd630a",
+      "message_id": "ed0cba24-55be-4bd1-a5b0-04e6fb7431b3",
+      "position": 2,
+      "category": "todo",
+      "topic": null,
+      "title": "Oat milk",
+      "body": "",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "c6d5d6de-d351-48ff-b731-df3b9f0b552e",
+      "message_id": "ed0cba24-55be-4bd1-a5b0-04e6fb7431b3",
+      "position": 3,
+      "category": "todo",
+      "topic": null,
+      "title": "Coffee beans",
+      "body": "",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "d406cf58-1d4f-42b4-868e-a9aea3a1e080",
+      "message_id": "2c904950-a343-4f86-aace-fbefbd5a2f1e",
+      "position": 0,
+      "category": "moment",
+      "topic": null,
+      "title": "Fog rolling in over Lands End, the whole city di…",
+      "body": "Fog rolling in over Lands End, the whole city disappeared in about five minutes",
+      "attachment_id": "aabfc487-08b6-48a7-adb6-def7dc903bc5",
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "a575f768-71e2-4456-a86f-3ab29d43fb70",
+      "message_id": "004f2754-0a66-43d1-b317-45f9900c9e86",
+      "position": 0,
+      "category": "todo",
+      "topic": null,
+      "title": "Call the dentist to reschedule",
+      "body": "",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "1069b94c-bddb-489e-9296-b56f73f93cfa",
+      "message_id": "c35d5f1e-2597-4b9e-bdfe-8ad62a058347",
+      "position": 0,
+      "category": "todo",
+      "topic": null,
+      "title": "Email Maya the onboarding notes",
+      "body": "",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "2013d9fc-ebdb-486d-9c3b-c8acc3741210",
+      "message_id": "7a2edf0a-0a12-4296-a97b-f8b7bec500ff",
+      "position": 0,
+      "category": "idea",
+      "topic": null,
+      "title": "The journal could write a one line headline for …",
+      "body": "The journal could write a one line headline for each day, like a magazine cover line",
+      "attachment_id": "ec9ae0c1-22b9-447b-8bc9-2349c414ecce",
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "876dabe1-cc81-42c6-bb74-c480b2d964f7",
+      "message_id": "b5c18f5c-4b72-47cc-8b78-2bc2344e10c4",
+      "position": 0,
+      "category": "inspiration",
+      "topic": null,
+      "title": "The colored pencil texture on this one is so goo…",
+      "body": "The colored pencil texture on this one is so good. Typography and color reference for the empty states",
+      "attachment_id": "37261dfe-3720-4fff-bcb4-d58c73c27576",
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "29d4e2bb-8346-4af8-81f1-2f6e864e7a66",
+      "message_id": "b76a2220-b265-4915-aad5-8e0c5d7fc699",
+      "position": 0,
+      "category": "note",
+      "topic": null,
+      "title": "Cooked dinner for the first time in two weeks. S…",
+      "body": "Cooked dinner for the first time in two weeks. Small win, felt good to be off screens for an hour.",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "721f4af3-82b0-42f5-84bc-c48026a69c68",
+      "message_id": "b111d440-4f92-4c6c-9850-3d9897c9c93f",
+      "position": 0,
+      "category": "todo",
+      "topic": null,
+      "title": "Finish the template spec",
+      "body": "",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "d49b0c1c-b1aa-449f-a489-fb7247f9b98a",
+      "message_id": "b111d440-4f92-4c6c-9850-3d9897c9c93f",
+      "position": 1,
+      "category": "todo",
+      "topic": null,
+      "title": "Review Jun's PR",
+      "body": "",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "69f0c80c-e8d1-4091-8298-8784975a0402",
+      "message_id": "b111d440-4f92-4c6c-9850-3d9897c9c93f",
+      "position": 2,
+      "category": "todo",
+      "topic": null,
+      "title": "Book flights for Thanksgiving",
+      "body": "",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "5a43db48-190c-442c-b21d-c2026cbbd73c",
+      "message_id": "445f3f43-b301-437c-95a5-fce9216a4bf9",
+      "position": 0,
+      "category": "idea",
+      "topic": null,
+      "title": "What if search worked like asking a friend who r…",
+      "body": "What if search worked like asking a friend who remembers everything you ever sent them?",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "49301d5b-a5d8-4431-8c31-0cd5c29a31e1",
+      "message_id": "d1ee8cbb-6d39-4d59-968b-ecca17369680",
+      "position": 0,
+      "category": "note",
+      "topic": null,
+      "title": "Couldn't sleep, kept thinking about how most not…",
+      "body": "Couldn't sleep, kept thinking about how most notes apps make you decide where things go before you've even finished the thought.",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "306d9767-768a-48f6-b055-834f863d0850",
+      "message_id": "fefdf586-ea30-458c-9538-162139e23058",
+      "position": 0,
+      "category": "inspiration",
+      "topic": null,
+      "title": "Saturated pinks with a yellow car, great palette…",
+      "body": "Saturated pinks with a yellow car, great palette for the launch page",
+      "attachment_id": "dfe8e224-a3ce-45a4-adfd-2777840d55a0",
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "c822068d-1142-4a78-a04a-8c7183d07910",
+      "message_id": "6eabd099-76b1-4e26-8754-7faa432e9f1e",
+      "position": 0,
+      "category": "todo",
+      "topic": null,
+      "title": "Pay the electricity bill",
+      "body": "",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "e6b3bbb8-e6f1-4360-b248-d9e05af007ca",
+      "message_id": "cf2398ee-3b06-42d5-b30e-d036023bba01",
+      "position": 0,
+      "category": "inspiration",
+      "topic": null,
+      "title": "Sleepy moon for the night mode illustration set,…",
+      "body": "Sleepy moon for the night mode illustration set, love the style",
+      "attachment_id": "1d410694-c075-465b-a55e-1523a39a2c52",
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "5117a5a0-1540-4b98-be78-237916246bf3",
+      "message_id": "ace6e3ef-ed95-4339-a43b-035ebdb96b0e",
+      "position": 0,
+      "category": "idea",
+      "topic": null,
+      "title": "A weekly digest that shows the three things you …",
+      "body": "A weekly digest that shows the three things you saved but never opened",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "0f9ff55f-c346-474c-a42e-38331729019b",
+      "message_id": "0d33d430-b01f-4917-9cdd-7e6d6d6a6242",
+      "position": 0,
+      "category": "note",
+      "topic": null,
+      "title": "Morning pages: feeling clearer about the roadmap…",
+      "body": "Morning pages: feeling clearer about the roadmap. Search first, then custom templates.",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "7a4bfc5a-2d41-44c0-94b5-e467f48668fa",
+      "message_id": "44c9a708-0369-41ea-8eb5-21f9a49a8e72",
+      "position": 0,
+      "category": "todo",
+      "topic": null,
+      "title": "Send the demo link to the team before standup",
+      "body": "",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "87d527b4-e176-4779-a90b-29e15ad7431d",
+      "message_id": "d70ee7b5-16a0-4361-978a-0a70127f8c80",
+      "position": 0,
+      "category": "note",
+      "topic": null,
+      "title": "Lunch with Priya, she wants to try BrainDump wit…",
+      "body": "Lunch with Priya, she wants to try BrainDump with her design team next month",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "0ed409e7-d67d-468d-a662-cc73de28af0c",
+      "message_id": "06b5eac1-7569-41d3-a72a-fe52adb7ca6c",
+      "position": 0,
+      "category": "link",
+      "topic": null,
+      "title": "Bullet journal - Wikipedia",
+      "body": "reading about rapid logging, it is basically what BrainDump does",
+      "attachment_id": null,
+      "link_id": "f1d0943b-70ab-4997-bb48-9360cff6c37e",
+      "done": 0
+    },
+    {
+      "id": "a2f76685-edb6-46a0-b758-5c87e73aabb0",
+      "message_id": "4e77f929-6b69-4e20-a9fe-0755bc08a896",
+      "position": 0,
+      "category": "link",
+      "topic": null,
+      "title": "GitHub - anthropics/anthropic-sdk-typescript: Access to Anthropic's safety-first language model APIs in TypeScript",
+      "body": "want to go through this properly later",
+      "attachment_id": null,
+      "link_id": "6c58f6eb-0bd5-4b18-af51-aec15d5fefe9",
+      "done": 0
+    },
+    {
+      "id": "ec0549e1-bc01-4c0d-90f7-8b33466dec2e",
+      "message_id": "8c8959ab-1c47-4543-9012-b309d7ad7814",
+      "position": 0,
+      "category": "link",
+      "topic": null,
+      "title": "Are.na",
+      "body": "are.na channels are such a nice way to collect references",
+      "attachment_id": null,
+      "link_id": "5853deb3-caa9-4a20-a2a3-a39bf7e9772e",
+      "done": 0
+    },
+    {
+      "id": "e9a8ca6f-eb7f-46ec-90c7-66130a22d2ac",
+      "message_id": "a83c5ebf-971f-4a36-bcaa-cde25e498381",
+      "position": 0,
+      "category": "link",
+      "topic": null,
+      "title": "Newsreader - Google Fonts",
+      "body": "Newsreader looks great for headlines, maybe pair it with a clean sans",
+      "attachment_id": null,
+      "link_id": "3782bc68-c519-466d-8797-0dc42793e8eb",
+      "done": 0
+    },
+    {
+      "id": "16bf8e22-3d36-4a01-8af9-a949f0d31f82",
+      "message_id": "672a756e-ae96-490b-b4f1-f6753f810d0a",
+      "position": 0,
+      "category": "link",
+      "topic": null,
+      "title": "About | Are.na",
+      "body": "this looks useful",
+      "attachment_id": null,
+      "link_id": "8885fb51-da4c-4e26-bc31-35a209b75e35",
+      "done": 0
+    },
+    {
+      "id": "4cf1f94f-1bac-4dd1-8e8c-b23a3332f244",
+      "message_id": "672a756e-ae96-490b-b4f1-f6753f810d0a",
+      "position": 1,
+      "category": "todo",
+      "topic": null,
+      "title": "Buy flowers for Sam",
+      "body": "",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "aa731902-7888-4273-81d0-2d1bf871f8ad",
+      "message_id": "672a756e-ae96-490b-b4f1-f6753f810d0a",
+      "position": 2,
+      "category": "todo",
+      "topic": null,
+      "title": "Call the landlord about the heater",
+      "body": "",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "2948394b-0315-45ed-930e-cb1d2ec2ee08",
+      "message_id": "930cf19e-349a-4416-af09-15d8d2f6622e",
+      "position": 0,
+      "category": "todo",
+      "topic": null,
+      "title": "Meeting with Rohan at 1",
+      "body": "",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "963dd923-a825-4d73-87bb-e79358e6b8da",
+      "message_id": "930cf19e-349a-4416-af09-15d8d2f6622e",
+      "position": 1,
+      "category": "todo",
+      "topic": null,
+      "title": "Go for a walk at 5 pm at Central Park",
+      "body": "",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    },
+    {
+      "id": "54da3906-e1af-434f-bb6d-cbb1726158d8",
+      "message_id": "83779c8b-5efa-4afd-ac08-88860f66a573",
+      "position": 0,
+      "category": "todo",
+      "topic": null,
+      "title": "Read Atomic Habits later tonight",
+      "body": "",
+      "attachment_id": null,
+      "link_id": null,
+      "done": 0
+    }
+  ],
+  "templates": [
+    {
+      "id": "d9bd9821-9060-4fa2-acb4-0feccb159e69",
+      "created_at": 1792779984212,
+      "prompt": "A weekly review of my ideas and notes, in a serif magazine style",
+      "spec": "{\"name\":\"Weekly review\",\"emoji\":\"🗓️\",\"title\":\"Weekly review of my ideas and notes\",\"subtitle\":\"\",\"include\":[\"idea\",\"note\"],\"groupBy\":\"week\",\"sort\":\"newest\",\"layout\":\"cards\",\"hideDone\":false,\"showTime\":true,\"style\":{\"font\":\"serif\",\"accent\":\"gray\",\"density\":\"comfortable\"},\"note\":\"\"}"
+    },
+    {
+      "id": "d5a8ad20-f2b1-4db9-99a7-4bbab25b2ca4",
+      "created_at": 1792780035315,
+      "prompt": "A reading list of everything I saved, as a compact list",
+      "spec": "{\"name\":\"Reading list\",\"emoji\":\"📚\",\"title\":\"Reading list of everything I saved\",\"subtitle\":\"\",\"include\":[\"link\"],\"groupBy\":\"none\",\"sort\":\"newest\",\"layout\":\"list\",\"hideDone\":false,\"showTime\":true,\"style\":{\"font\":\"sans\",\"accent\":\"gray\",\"density\":\"compact\"},\"note\":\"\"}"
+    },
+    {
+      "id": "687137b0-f99b-4b4c-a674-7c8c6e80c8f3",
+      "created_at": 1792780037579,
+      "prompt": "A moodboard gallery of my inspiration images",
+      "spec": "{\"name\":\"Moodboard gallery\",\"emoji\":\"🖼️\",\"title\":\"Moodboard gallery of my inspiration images\",\"subtitle\":\"\",\"include\":[\"inspiration\"],\"groupBy\":\"none\",\"sort\":\"newest\",\"layout\":\"gallery\",\"hideDone\":false,\"showTime\":true,\"style\":{\"font\":\"sans\",\"accent\":\"gray\",\"density\":\"comfortable\"},\"note\":\"\"}"
+    },
+    {
+      "id": "4dc0cd76-e5e6-4c8e-8083-d33f5e2eb34b",
+      "created_at": 1792780047042,
+      "prompt": "Open to-dos grouped by topic, as a green checklist",
+      "spec": "{\"name\":\"Open to-dos\",\"emoji\":\"☑️\",\"title\":\"Open to-dos grouped by topic\",\"subtitle\":\"\",\"include\":[\"todo\"],\"groupBy\":\"topic\",\"sort\":\"newest\",\"layout\":\"checklist\",\"hideDone\":true,\"showTime\":true,\"style\":{\"font\":\"sans\",\"accent\":\"green\",\"density\":\"comfortable\"},\"note\":\"\"}"
+    }
+  ]
+}

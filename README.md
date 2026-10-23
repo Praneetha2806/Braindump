@@ -18,6 +18,8 @@ npm run dev            # http://localhost:5173
 
 You need Node 23.4 or newer, because the app uses the built-in `node:sqlite`.
 
+The repo ships with sample data in `seed/` (the log, its images and voice memos, and a few custom templates). The first time the app starts with an empty database, it loads that sample automatically, so a fresh clone looks the same as the original. Your own entries are saved in `data/`, which is not committed. To update the sample from your current data, run `npm run seed:export` and commit `seed/`. To start from a blank log instead, delete `seed/seed.json` before the first run.
+
 If you don't set `ANTHROPIC_API_KEY`, a rule-based categorizer is used instead. It handles the obvious cases: links, images, bulleted to-do lists, and "Idea:" prefixes.
 
 To run a production build: `npm run build && npm start`.
