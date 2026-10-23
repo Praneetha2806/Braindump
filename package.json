@@ -12,7 +12,8 @@
     "start": "NODE_ENV=production tsx server/index.ts",
     "typecheck": "tsc --noEmit",
     "build:demo": "vite build --config vite.demo.config.ts",
-    "seed:export": "tsx server/seed.ts export"
+    "seed:export": "tsx server/seed.ts export",
+    "keywords": "tsx server/keywords.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.131.0",
@@ -31,6 +32,7 @@
     "@vitejs/plugin-react": "^6.1.1",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",
-    "vite": "^8.3.2"
+    "vite": "^8.3.2",
+    "wordnet-db": "^3.1.14"
   }
 }
