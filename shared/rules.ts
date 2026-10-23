@@ -33,15 +33,22 @@ const ACTION_VERBS = String.raw`buy|get|call|text|email|send|book|submit|pay|sch
 const DEADLINES = String.raw`today|tomorrow|tonight|next week|by (?:${DAYS}|tomorrow|tonight|noon|eod|eow|end of (?:the )?(?:day|week|month))|before (?:${DAYS}|tomorrow|tonight|noon|the deadline|\d{1,2}(?::\d{2})?\s*(?:am|pm)?)|deadlines?|due(?! to\b)|eod|asap`;
 // Status words, anywhere: "report (in progress)", "car insurance overdue".
 const STATUSES = String.raw`in progress|not started|overdue`;
+// Priority words, anywhere: "urgent: fix the login bug", "P1 invoice for Acme".
+const PRIORITIES = String.raw`urgent|important|high[\s-]priority|p1`;
+// Formatting cues that open a line: "- [ ] call mom", "[x] pay rent", "☐ book flights", "✅ renew passport".
+const CHECKBOX = String.raw`\[[\sxX]?\]|☐|☑️?|✅|✔️?`;
+// A bulleted or numbered line this short reads as a list entry ("- Figs", "2. Email Maya"), not prose.
+const BULLET_RE = /^\s*(?:[-*•]|\d+[.)])\s+/;
+const SHORT_LINE_WORDS = 8;
 // "done" and "completed" also describe the past ("I'm finally done with that show"), so they count only as a
 // label: "Done: pay rent", "pay rent - done", "pay rent (completed)".
 const DONE_LABEL_RE = /^\s*(?:done|completed)\s*[:\-–—]|(?:\s[-–—]\s*|[(\[])(?:done|completed)[)\]]?[.!]*\s*$/i;
 const STATUS_LABEL_RE = /^\s*(?:to[\s-]?do|tasks?|action items?|reminders?|pending|done|completed|in progress|not started|overdue)\s*:\s*/i;
 const STATUS_SUFFIX_RE = /\s*(?:\s[-–—]\s*|[(\[])(?:done|completed|in progress|not started|overdue)[)\]]?[.!]*\s*$/i;
 
-/** A clause that opens like a task: a checkbox, an action verb, a task word, or an obligation. */
-const TODO_RE = new RegExp(String.raw`^\s*(?:[-*•]\s*)?(?:\[\s?\]|(?:${ACTION_VERBS}|${TASK_WORDS}|${OBLIGATIONS}|tomorrow|tonight|next week)\b)`, "i");
-const TODO_TAG_RE = new RegExp(String.raw`\b(?:${TASK_WORDS}|${OBLIGATIONS}|${STATUSES})\b`, "i");
+/** A clause that opens like a task: a checkbox, an action verb, a task word, an obligation, or a priority. */
+const TODO_RE = new RegExp(String.raw`^\s*(?:(?:[-*•]|\d+[.)])\s*)?(?:${CHECKBOX}|(?:${ACTION_VERBS}|${TASK_WORDS}|${OBLIGATIONS}|${PRIORITIES}|tomorrow|tonight|next week)\b)`, "i");
+const TODO_TAG_RE = new RegExp(String.raw`\b(?:${TASK_WORDS}|${OBLIGATIONS}|${STATUSES}|${PRIORITIES})\b`, "i");
 const DEADLINE_RE = new RegExp(String.raw`\b(?:${DEADLINES})\b`, "i");
 
 // Plans count as to-dos too: things with a time on them, intentions, and appointments.
@@ -63,8 +70,13 @@ const isTask = (c: string) =>
   INTENT_RE.test(c) ||
   ((TIME_RE.test(c) || DEADLINE_RE.test(c)) && !PAST_RE.test(c.replace(INTENT_RE, "")));
 
+/** A short bulleted or numbered line that doesn't look back ("- Felt tired" stays a note). */
+const isListEntry = (c: string) =>
+  BULLET_RE.test(c) && stripBullet(c).split(/\s+/).filter(Boolean).length <= SHORT_LINE_WORDS && !PAST_RE.test(c);
+
 const TODO_HEADER_RE = /\b(to-?do|to do|tasks|action items|reminders|pending|to buy|shopping list|checklist)\b/i;
-const stripBullet = (l: string) => l.replace(/^\s*(?:[-*•]|\d+[.)])?\s*(?:\[\s?\]\s*)?/i, "").replace(STATUS_LABEL_RE, "");
+const stripBullet = (l: string) =>
+  l.replace(new RegExp(String.raw`^\s*(?:[-*•]|\d+[.)])?\s*(?:(?:${CHECKBOX})\s*)?`, "i"), "").replace(STATUS_LABEL_RE, "");
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 const stripPrefix = (l: string) => capitalize(l.replace(/^(?:idea|note|thought):\s*/i, ""));
 // Opening filler that isn't part of the task: "Hey, today I have a meeting…" → "Meeting…"
@@ -94,7 +106,8 @@ const isFiller = (s: string) => /^(?:hey|hi|hello|ok|okay|so|um|well|alright|oh)
 function clauses(text: string): string[] {
   const out: string[] = [];
   for (const line of text.split("\n").map((l) => l.trim()).filter(Boolean)) {
-    for (const sentence of line.split(/(?<=[.!?;])\s+/)) {
+    // The "." of a list number ("2. Email Maya") doesn't end a sentence.
+    for (const sentence of line.split(/(?<!^\d+[.)])(?<=[.!?;])\s+/)) {
       const parts = sentence.split(/(,\s*|\s+and\s+|\s+also\s+|\s+then\s+)/i);
       let current = parts[0];
       for (let i = 1; i < parts.length; i += 2) {
@@ -110,7 +123,7 @@ function clauses(text: string): string[] {
   return out.map((c) => c.replace(CONNECTOR, "").replace(/[,;]\s*$/, "").trim()).filter((c) => c && !isFiller(c));
 }
 
-type Clause = { kind: "todo" | "idea" | "note" | "link"; text: string; urls: string[] };
+type Clause = { kind: "todo" | "idea" | "note" | "link"; text: string; urls: string[]; bullet?: boolean };
 
 function parse(text: string): Clause[] {
   const lines = text.split("\n").map((l) => l.trim()).filter(Boolean);
@@ -121,18 +134,22 @@ function parse(text: string): Clause[] {
   const parsed = clauses(text).map((c): Clause => {
     const urls = extractUrls(c);
     if (urls.length) return { kind: "link", text: urls.reduce((acc, u) => acc.replace(u, ""), c).replace(/\s+/g, " ").trim(), urls };
-    if (/^\s*(?:idea:|what if)/i.test(c)) return { kind: "idea", text: c, urls: [] };
+    const bullet = BULLET_RE.test(c);
+    if (/^\s*(?:idea:|what if)/i.test(stripBullet(c))) return { kind: "idea", text: stripBullet(c), urls: [], bullet };
     if (isTask(c)) return { kind: "todo", text: c, urls: [] };
-    if (IDEA_RE.test(c)) return { kind: "idea", text: c, urls: [] };
-    return { kind: "note", text: c, urls: [] };
+    if (IDEA_RE.test(c)) return { kind: "idea", text: stripBullet(c), urls: [], bullet };
+    if (isListEntry(c)) return { kind: "todo", text: c, urls: [] };
+    return { kind: "note", text: c, urls: [], bullet };
   });
   // Neighbouring note clauses are one thought, and sentences after an idea keep elaborating it unless they open a
   // new one ("Idea: …", "What if …").
   return parsed.reduce<Clause[]>((acc, c) => {
     const last = acc[acc.length - 1];
+    // Each bulleted line is its own item.
     const continues =
-      (c.kind === "note" && (last?.kind === "note" || last?.kind === "idea")) ||
-      (c.kind === "idea" && last?.kind === "idea" && !NEW_IDEA_RE.test(c.text));
+      !c.bullet &&
+      ((c.kind === "note" && (last?.kind === "note" || last?.kind === "idea")) ||
+        (c.kind === "idea" && last?.kind === "idea" && !NEW_IDEA_RE.test(c.text)));
     if (continues) last.text += " " + c.text;
     else acc.push({ ...c });
     return acc;
@@ -143,7 +160,7 @@ const base = { topic: null, attachment_id: null, link_id: null };
 
 function itemFor(c: Clause): NewItem {
   if (c.kind === "todo") return { ...base, category: "todo", title: short(todoTitle(c.text), 80), body: "" };
-  const text = stripPrefix(c.text);
+  const text = stripPrefix(stripBullet(c.text));
   return { ...base, category: c.kind === "idea" ? "idea" : "note", title: short(text), body: text };
 }
 
